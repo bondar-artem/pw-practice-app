@@ -83,6 +83,7 @@
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
     "@typescript-eslint/parser": "^5.36.2",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
     "codelyzer": "^0.0.28",
     "conventional-changelog-cli": "^2.2.2",
     "husky": "0.13.3",
