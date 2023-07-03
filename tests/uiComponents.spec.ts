@@ -173,8 +173,8 @@ test('datepicker', async({page}) => {
         await page.locator('nb-calendar-pageable-navigation [data-name="chevron-right"]').click()
         calendarMonthAndYear = await page.locator('nb-calendar-view-mode').textContent()
     }
-
     await page.locator('[class="day-cell ng-star-inserted"]').getByText(expectedDate, {exact: true}).click()
+    
     await expect(calendarInputField).toHaveValue(dateToAssert)
 })
 
