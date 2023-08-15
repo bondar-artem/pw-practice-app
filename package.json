@@ -61,6 +61,7 @@
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
     "@compodoc/compodoc": "^1.1.19",
+    "@faker-js/faker": "^8.0.2",
     "@fortawesome/fontawesome-free": "^5.2.0",
     "@playwright/test": "^1.34.3",
     "@types/leaflet": "1.2.3",
