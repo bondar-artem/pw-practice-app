@@ -1,11 +1,14 @@
 import {test, expect} from '@playwright/test'
 
+test.describe.configure({mode: 'parallel'})
+
 test.beforeEach(async({page}) => {
     await page.goto('http://localhost:4200/')
 })
 
-test.describe.only('Form Layouts page', () => {
+test.describe('Form Layouts page', () => {
     test.describe.configure({retries: 2})
+    test.describe.configure({mode: 'serial'})
 
     test.beforeEach( async({page}) => {
         await page.getByText('Forms').click()
