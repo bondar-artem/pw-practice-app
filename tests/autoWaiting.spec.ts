@@ -24,13 +24,13 @@ test('alternative waits', async({page}) => {
     const successButton = page.locator('.bg-success')
 
     //___ wait for element
-    await page.waitForSelector('.bg-success')
+    // await page.waitForSelector('.bg-success')
 
     //__ wait for particlular response
     // await page.waitForResponse('http://uitestingplayground.com/ajaxdata')
 
     //__ wait for network calls to be completed ('NOT RECOMMENDED')
-    // await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('networkidle')
 
     const text = await successButton.allTextContents()
     expect(text).toContain('Data loaded with AJAX get request.')
