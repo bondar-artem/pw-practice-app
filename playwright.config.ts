@@ -55,6 +55,13 @@ export default defineConfig<TestOptions>({
       use: {
         viewport: {width: 1920, height: 1080}
       }
+    },
+    {
+      name: 'mobile',
+      testMatch: 'testMobile.spec.ts',
+      use: {
+        ...devices['iPhone 13 Pro']
+      }
     }
   ]
 });
