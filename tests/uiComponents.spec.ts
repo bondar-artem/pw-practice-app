@@ -23,7 +23,7 @@ test.describe('Form Layouts page @block', () => {
 
         await usingTheGridEmailInput.fill('test@test.com')
         await usingTheGridEmailInput.clear()
-        await usingTheGridEmailInput.type('test2@test.com', {delay: 500})
+        await usingTheGridEmailInput.pressSequentially('test2@test.com', {delay: 500})
 
         //generic assertion
         const inputValue = await usingTheGridEmailInput.inputValue()
