@@ -38,5 +38,8 @@ test('locator syntax rules', async({page})=>{
     //by exact text match
     page.locator(':text-is("Using the Grid")')
 
+})
 
+test('user facing locators',async ({page}) => {
+    await page.getByRole('textbox', {name:"Email"}).first().click()
 })

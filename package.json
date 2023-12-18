@@ -71,5 +71,16 @@
     "tslint": "~6.1.0",
     "tslint-language-service": "^0.9.9",
     "typescript": "~4.6.4"
-  }
+  },
+  "description": "This is modified and more lightweight version of original application to practice UI Automation with Playwright.",
+  "bugs": {
+    "url": "https://github.com/bondar-artem/pw-practice-app/issues"
+  },
+  "homepage": "https://github.com/bondar-artem/pw-practice-app#readme",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "",
+  "keywords": []
 }
