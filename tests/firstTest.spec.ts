@@ -58,5 +58,5 @@ test("locating child elements", async ({ page }) => {
     //é possível ainda combinar regular locator com facing locator. Obs. o button abaixo poderia ser selecionado apenas com o método getByRole
     await page.locator('nb-card').getByRole('button', {name: "sign in"}).first().click()
     //selecionando pelo index
-    await page.locator('nb-card').nth(3).getByRole('button').click() //elements are 0 index based so this is the fourth element from the top of the DOM
+    await page.locator('nb-card').nth(2).getByRole('button').click() //elements are 0 index based so this is the fourth element from the top of the DOM
 });
