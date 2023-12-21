@@ -1,0 +1,25 @@
+{
+    "name": "senna/teste-scraping",
+    "description": "Um projeto para teste de scraping",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Senna\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gabriel Senna",
+            "email": "msgabrielrafael@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/browser-kit": "6.4.x-dev",
+        "thiagoalessio/tesseract_ocr": "dev-main"
+    },
+    "require-dev": {
+        "symfony/panther": "^2.1",
+        "dbrekelmans/bdi": "dev-main"
+    }
+}
