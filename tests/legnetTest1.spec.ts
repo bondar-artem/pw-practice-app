@@ -7,6 +7,10 @@ test("Login", async ({ page }) => {
   await page.goto("https://www.legnet.com.br/legnet/login.php");
   const cod_cli = page.locator("#login_cod_cliente");
   await cod_cli.fill("1");
-
+  const user_name = page.locator("#login_usuario");
+  await user_name.fill("juridico");
+  const login_senha = page.locator("#login_senha");
+  await login_senha.fill("Legnet123!");
+  
 })
 
