@@ -11,8 +11,14 @@ test("Login", async ({ page }) => {
   await user_name.fill("juridico");
   const login_senha = page.locator("#login_senha");
   await login_senha.fill("Legnet123!");
+  await page.getByRole("button", { name: "ENTRAR" }).first().click();
+  await page.click('#fa-plus-topo');
+  //await page.click('.btn btn-app bg-blue dropdown-toggle');
+  
+ 
 
 
   
 })
+
 
