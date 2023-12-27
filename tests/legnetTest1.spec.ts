@@ -13,7 +13,12 @@ test("Login", async ({ page }) => {
   await login_senha.fill("Legnet123!");
   await page.getByRole("button", { name: "ENTRAR" }).first().click();
   await page.click('#fa-plus-topo');
-  //await page.click('.btn btn-app bg-blue dropdown-toggle');
+  const fourthDiv = await page.$('#menubase > div:nth-child(3)');
+  await fourthDiv.hover();
+  await page.click(".space")
+
+  
+
   
  
 
