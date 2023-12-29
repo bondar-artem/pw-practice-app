@@ -16,8 +16,14 @@ test("Login", async ({ page }) => {
   await page.click('.marcado');
   await page.click('.btn-success');
   await page.click('.btn-primary');//vai para relatório de obrigações
+  
    
 })
+
+
+
+
+
 
 
 // test('dashboard-obrigaçoes-pdf', async () => {
@@ -38,21 +44,22 @@ test("Login", async ({ page }) => {
   
 //   });
 
-test("dashboard-obrigaçoes-excel", async ({ page }) => {
-  await page.goto("https://www.legnet.com.br/app-web/relatorios/estatistica_obrigacoes.php?conexao={92A15473-CADD-B24B-AABF-6244FFBC235E}&cod_area=6&cod_setor=40&cod_ficha=&cod_modulo=&grupoobrigacoes=&origem=&cod_estado=&cod_municipio=&cod_atendimento=&to_nat=&to_at=&to_nav=&to_po=&to_to=");
-  
-  await page.click('#FormularioExportacao')
-   
-  
-});
 
-  test("dashboard-obrigaçoes-excel", async ({ page }) => {
-    await page.goto("https://www.legnet.com.br/app-web/relatorios/estatistica_obrigacoes.php?conexao={92A15473-CADD-B24B-AABF-6244FFBC235E}&cod_area=6&cod_setor=40&cod_ficha=&cod_modulo=&grupoobrigacoes=&origem=&cod_estado=&cod_municipio=&cod_atendimento=&to_nat=&to_at=&to_nav=&to_po=&to_to=");
-    
-    await page.click('#FormularioExportacao')
 
-   
-       
-    
-  });
-   
+// test("dashboard-obrigaçoes-excel", async ({ page }) => {
+//   await page.goto("https://www.legnet.com.br/app-web/relatorios/estatistica_obrigacoes.php?conexao={28EFEB53-B66F-F80D-8740-5BE2C0BB7574}&cod_area=6&cod_setor=40&cod_ficha=&cod_modulo=&grupoobrigacoes=&origem=&cod_estado=&cod_municipio=&cod_atendimento=&to_nat=%20%20%20%20%20%20%204%20%20%20&to_at=%20%20%20%20%20%20%20189%20%20%20&to_nav=%20%20%20%20%20%20%200%20%20%20&to_po=%20%20%20%20%20%20%200%20%20%20&to_to=193");
+
+
+//   const downloadPromise = page.waitForEvent('download');
+//   await page.getByText('Exportar para Excel').click();
+//   const download = await downloadPromise;
+
+//   // Wait for the download process to complete and save the downloaded file somewhere.
+//   await download.saveAs('c:/playwrightFiles/excel.xls' + download.suggestedFilename());
+  
+  
+// });
+
+ 
+
+
