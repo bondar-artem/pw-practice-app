@@ -16,11 +16,13 @@ test('Locator syntax rules', async ({ page }) => {
 test('User facing locators', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Email' }).first().click();
   // await page.getByTestId('HC').first().click();
-  // await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 2")').click() 
+  // await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 2")').click()
   // await page.locator('nb-card').getByRole('button',{name:"Sign in"}).first()
   await page.locator('nb-card',{hasText:"Using"}).getByRole('textbox',{name:"Email"}).click()
   //await page.getByRole('button', { name: "Sign in" }).first().click();
+//
 
+ // dfsdfasdf
 });
 
 
