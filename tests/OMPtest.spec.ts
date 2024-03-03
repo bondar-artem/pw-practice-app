@@ -11,13 +11,15 @@ test('Login',async ({ page }) => {
   await page.locator('#okta-signin-username').fill('ompoltestuser1@outlook.com')
   await page.locator('#okta-signin-password').fill('Traderev1!')
   await page.locator('#okta-signin-submit').click()
-  await page.waitForLoadState("load")
-  //await page.waitForTimeout(10000)
-  //await page.reload()
-  await page.locator(':text("Browse")').nth(1).click();
-  await expect(page.locator(':text("Browse")').nth(1)).toBeVisible();
+  await page.waitForURL('https://app.stg.openlane.ca/')
+  await page.waitForLoadState('load'); 
+
+  await page.getByTestId('header-heading').click()
+  await expect(page.getByTestId('header-heading')).toBeVisible();
+
+  //await expect(page.locator(':text("Browse")').nth(1)).toBeVisible();
   //await page.locator(':text("Browse")').getByTestId('header-heading').click();
-  //await expect(page.getByTestId('header-heading')).toBeVisible();
+  //  await page.locator(':text("Browse")').nth(1).click();
 });
 
 
