@@ -55,6 +55,7 @@ test("Atualização de Cliente", async ({ page }) => {
   //aguarda o h3 Busca Finalizada
   await page.waitForSelector("#idBuscaFinalizada", { state: 'visible' });
 
+  
   // Atenção!  If  count > 0 seguir, else encerra aqui
 
 //marca o checkbox para marcar as normas   
