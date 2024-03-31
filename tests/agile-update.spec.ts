@@ -34,11 +34,11 @@ test("Atualização de Cliente", async ({ page }) => {
 
   //seleciona um pac específico
   const pac = page.locator("#PAC");
-  await pac.fill("UN29082");
+  // await pac.fill("UN29082");
 
   const filtroCliente = page.locator("#FiltroCliente");
 
-  await filtroCliente.selectOption("2106");
+  await filtroCliente.selectOption("2706");
 
   //para mais de um option (cliente)
   //await filtroCliente.selectOptions(["2106", "2107"]);
