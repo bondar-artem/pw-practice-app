@@ -38,7 +38,7 @@ test("Atualização de Cliente", async ({ page }) => {
 
   const filtroCliente = page.locator("#FiltroCliente");
 
-  await filtroCliente.selectOption("2706");
+  await filtroCliente.selectOption("2580");
 
   //para mais de um option (cliente)
   //await filtroCliente.selectOptions(["2106", "2107"]);
