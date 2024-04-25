@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import {faker} from '@faker-js/faker'
-import { argosScreenshot } from "@argos-ci/playwright";
+
 
 
 test.beforeEach(async({page}) => {
@@ -32,12 +32,4 @@ test('parametrized methods @smoke', async({page}) => {
     await pm.navigateTo().datepickerPage()
     await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(10)
     await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 10)
-})
-
-test.only('test with Argos CI', async({page}) => {
-    const pm = new PageManager(page)
-    await pm.navigateTo().formLayoutsPage()
-    await argosScreenshot(page, "formLayoutsPage");
-    await pm.navigateTo().datepickerPage()
-    await argosScreenshot(page, "datepickerPage");
 })
