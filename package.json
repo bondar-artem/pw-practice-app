@@ -63,6 +63,7 @@
     "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
+    "@argos-ci/playwright": "^3.0.3",
     "@compodoc/compodoc": "^1.1.19",
     "@faker-js/faker": "^8.4.1",
     "@fortawesome/fontawesome-free": "^5.2.0",
