@@ -26,6 +26,7 @@
     "@nebular/security": "10.0.0",
     "@nebular/theme": "10.0.0",
     "@swimlane/ngx-charts": "^20.1.2",
+    "@types/ws": "^8.5.4",
     "angular2-chartjs": "0.4.1",
     "bootstrap": "4.3.1",
     "classlist.js": "1.1.20150312",
