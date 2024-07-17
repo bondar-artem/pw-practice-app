@@ -8,7 +8,12 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve"
+    "start": "ng serve",
+    "pageObjects-chrome": "npx playwright test usepageObjects.spec.ts --project=chromium",
+    "pageObjects-firefox": "npx playwright test usepageObjects.spec.ts -project=firefox",
+    "pagebjects-all": "npm run pageObjects-chrome && npm run pageObjects-firefox",
+    "autoWait-dev": "URL=http://uitestingplayground.com/ajax npx playwright test autoWait.spec.ts --project=chromium"
+
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
@@ -21,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "@asymmetrik/ngx-leaflet": "3.0.1",
+    "@faker-js/faker": "^8.4.1",
     "@nebular/auth": "10.0.0",
     "@nebular/eva-icons": "10.0.0",
     "@nebular/security": "10.0.0",
@@ -62,8 +68,10 @@
     "@playwright/test": "^1.45.0",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
+    "allure-playwright": "^3.0.0-beta.6",
     "codelyzer": "^0.0.28",
     "conventional-changelog-cli": "^2.2.2",
+    "dotenv": "^16.4.5",
     "npm-run-all": "4.0.2",
     "rimraf": "2.6.1",
     "stylelint": "^15.6.0",

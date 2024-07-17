@@ -3,16 +3,19 @@ import{test, expect} from "@playwright/test"
 import { delay } from "rxjs-compat/operator/delay"
 
 test.beforeEach(async({page}, testInfo) => {
-    await page.goto("http://localhost:4200/")
+    await page.goto("http://localhost:4200/")  //url can be put on use in baseurl under use on playwriht config file and replaced here with forward slash /
 })
 
 test.describe("Form Layouts Page", () =>{
+    test.describe.configure({retries:0})  //number of retries to failed tests
+
         test.beforeEach(async({page}) =>{   
             await page.getByText("Forms").click() 
             await page.getByText("Form layouts").click() 
         })
 
-        test("input fields", async({page}) =>{
+test("input fields", async({page}) =>{
+            //if(testInfo.retry){}  -when you need to add a condition before retring test
             const gridEmailInput = page.locator("nb-card", {hasText: 'Using the Grid'}).getByRole('textbox', {name: "email"})
 
             await gridEmailInput.fill("kelvin@test.com")
@@ -196,4 +199,31 @@ test('Date picking for Dynamic Dates', async({page}) =>{
     await page.locator("[class ='day-cell ng-star-inserted']").getByText(expectedDate, {exact:true}).click()  //exact true checks the locator string matches exactly what has bee passed
 
     await expect(calendarInput).toHaveValue(dateToCheck)
+})
+
+test("sliders test", async({page}) =>{
+    //update attributes
+    const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger')
+    await tempGauge.evaluate( node =>{
+        node.setAttribute( 'cx', '228.5763')
+        node.setAttribute( 'cy', '228..5763')
+    })
+    await tempGauge.click()
+
+    //mouse movements
+    const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger')
+    await tempBox.scrollIntoViewIfNeeded()
+
+    const box = await tempBox.boundingBox()  
+    const x = box.x + box.width / 2
+    const y = box.y + box.height / 2
+
+    await page.mouse.move(x, y)
+    await page.mouse.down()  //simulate clicking of mouse once on x and y coordinates needed
+    await page.mouse.move(x +100, y)
+    await page.mouse.move(x+100, y+100)
+    await page.mouse.up()
+
+    await expect(tempBox).toContainText("30")  //assertion of temparture displayed
+
 })

@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  playwright-test:
+    image: playwright-test   #Image to use
+    build: 
+      context: .
+      dockerfile: ./Dockerfile        #docker file path
+    command: npm run autoWait-dev     #command to run
+    volumes:
+      - ./playwright-report/:/app/playwright-report/  #copy report from image report location to our local project location
+      - ./test-results/:/app/test-results/  
