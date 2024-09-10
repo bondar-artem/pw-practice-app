@@ -1,0 +1,8 @@
+services:
+  automation-app:
+    container_name: automation-app
+    build:
+      context: .
+    image: automation-app:latest
+    ports:
+      - 4200:4200
