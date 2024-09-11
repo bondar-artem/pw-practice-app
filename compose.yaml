@@ -1,8 +1,10 @@
+name: automation-app
+
 services:
-  automation-app:
+  web-app:
     container_name: automation-app
     build:
       context: .
     image: automation-app:latest
     ports:
-      - 4200:4200
+      - 4200:80

@@ -1,19 +1,18 @@
 ARG NODE_VERSION=20-alpine
 
 # Build stage
-FROM node:${NODE_VERSION} AS builder
+FROM node:${NODE_VERSION} AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package*.json ./
 RUN npm install --force
-
+RUN npm install -g @angular/cli
 COPY . .
+RUN ng build
 
-# Run stage
-FROM node:${NODE_VERSION}
-WORKDIR /usr/src/app
+# Prod stage
+FROM nginx:alpine
+COPY --from=build /app/dist/ /usr/share/nginx/html
+EXPOSE 80
 
-COPY --from=builder /usr/src/app /usr/src/app
-EXPOSE 4200
-
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
