@@ -1,5 +1,5 @@
 import {test as base} from '@playwright/test'
-import { PageManager } from '../pw-practice-app/page-objects/pageManager'
+import { PageManager } from './page-objects/pageManager'
 
 
 export type TestOptions = {
