@@ -1,6 +1,7 @@
 //Loops
 console.log("Hello WOrld")
 
+//Code example
 /*for(statment1; statment2; statment3){
 
 }*/

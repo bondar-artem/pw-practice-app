@@ -1,5 +1,6 @@
 // Conditional statement
 
+//Code example
 /*if (condition){
     //execute some code here
 } else {

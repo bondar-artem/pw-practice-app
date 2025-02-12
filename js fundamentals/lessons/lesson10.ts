@@ -11,7 +11,7 @@ active: true
 }
 
 
-
+//Just variables example
 //let familySize = 2;
 //let plannedDistanceToDrive = 100
 
