@@ -27,11 +27,11 @@ test.describe('Form Layouts page', () => {
 
     test ('Select radio buttons', async({page}) => {
     const usingTheGridForm = page.locator('nb-card', {hasText: "Using the Grid"})
-    //await usingTheGridForm.getByLabel('Option 1').check({force: true})
+    await usingTheGridForm.getByLabel('Option 1').check({force: true})
     await usingTheGridForm.getByRole('radio', {name: "Option 1"}).check({force: true})
     const radioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
     expect(radioStatus).toBeTruthy()
-    //await expect(usingTheGridForm.getByRole('radio', {name: "Option 1"})).toBeChecked()
+    await expect(usingTheGridForm.getByRole('radio', {name: "Option 1"})).toBeChecked()
 
     await usingTheGridForm.getByRole('radio', {name: "Option 2"}).check({force: true})
     expect(await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()).toBeFalsy()
@@ -43,16 +43,16 @@ test ('Select checkboxes', async({page}) => {
     await page.getByText('Modal & Overlays').click()
     await page.getByText('Toastr').click()
 
-    //await page.getByRole('checkbox', {name: "Hide on click"}).click({force: true}) // performs a click - might uncheck if its checked
+    await page.getByRole('checkbox', {name: "Hide on click"}).click({force: true}) // performs a click - might uncheck if its checked
     await page.getByRole('checkbox', {name: "Hide on click"}).check({force: true}) // checks if it isn't checked and leave it as is if it is checked and .unchecked - unchecks 
     await page.getByRole('checkbox', {name: "Prevent arising of duplicate toast"}).check({force: true}) 
 
     // check or uncheck all checkboxes on a page
-    /*const allBoxes = page.getByRole('checkbox')
+    const allBoxes = page.getByRole('checkbox')
     for(const box of await allBoxes.all()){
-        await box.uncheck({force: true})
-        expect(await box.isChecked).toBeFalsy()
-    }*/
+        await box.check({force: true})
+        expect(await box.isChecked).toBeTruthy()
+    }
 })
 
 test ('Select list and dropdowns', async({page}) => {
