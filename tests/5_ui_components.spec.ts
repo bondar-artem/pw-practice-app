@@ -62,7 +62,6 @@ test ('Select list and dropdowns', async({page}) => {
     page.getByRole('list') // when the list has a UL tag
     page.getByRole('listitem') // when the list has a LI tag
 
-    //const optionList = page.getByRole('list').locator('nb-option')
     const optionList = page.locator('nb-option-list nb-option')
     await expect(optionList).toHaveText(["Light", "Dark", "Cosmic", "Corporate"])
     await optionList.filter({hasText: "Cosmic"}).click()
