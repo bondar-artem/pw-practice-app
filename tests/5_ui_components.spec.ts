@@ -151,7 +151,7 @@ test('Web tables', async({page}) => {
     }
 })
 
-test('datepicker', async({page}) => {
+test('datepicker', {tag: '@cal'}, async({page}) => {
     await page.getByText('Forms').click()
     await page.getByText('Datepicker').click()
 
