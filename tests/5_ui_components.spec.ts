@@ -1,17 +1,26 @@
 import {test, expect} from '@playwright/test'
 import { asyncScheduler } from 'rxjs'
 
+test.describe.configure({mode: 'parallel'}) // all tests in file will be run in parallel
+
 test.beforeEach(async({page}, testInfo) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
 })
 
 test.describe('Form Layouts page', () => {
+    test.describe.configure({retries: 2}) // retry setup inside test
+    test.describe.configure({mode: 'serial'}) // tests will be run one by one
+
+
     test.beforeEach(async({page}) => {
         await page.getByText('Forms').click()
         await page.getByText('Form Layouts').click()
     })
 
-    test('Enter into input fields', async({page}) => {
+    test('Enter into input fields', async({page}, testInfo) => {
+        if(testInfo.retry){
+            //do something eg. clean db
+        }
         const usingTheGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
         await usingTheGridEmailInput.fill("test@test.com")
         await usingTheGridEmailInput.clear()

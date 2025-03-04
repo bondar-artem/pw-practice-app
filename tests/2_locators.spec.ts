@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
 
 test.beforeEach(async ({page}) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
     await page.getByText('Forms').click()
     await page.getByText('Form Layouts').click()
 })
@@ -101,7 +101,8 @@ test('Extracting values', async({page}) => {
     // input values
     const emailField = basicForm.getByRole('textbox', {name: "Email"})
     await emailField.fill('test@test.com') 
-    const emailValue = await emailField.inputValue
+    const emailValue = await emailField.inputValue()
+    await page.waitForTimeout(1000)
     expect(emailValue).toEqual('test@test.com')
 
     // atribute

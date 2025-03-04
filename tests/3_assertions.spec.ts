@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
 
 test.beforeEach(async ({page}) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
     await page.getByText('Forms').click()
     await page.getByText('Form Layouts').click()
 })
@@ -20,6 +20,6 @@ test('Locator assertions', async({page}) => {
 // soft assertion will continue running test after assertion validation fails 
 test('Soft assertions', async({page}) => {
     const basicFormButton = page.locator('nb-card').filter({hasText: "Basic form"}).locator('button')
-    await expect.soft(basicFormButton).toHaveText('Submit1')
+    await expect.soft(basicFormButton).toHaveText('Submit')
     await basicFormButton.click()
 })

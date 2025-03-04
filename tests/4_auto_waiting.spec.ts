@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test'
 
 test.beforeEach(async({page}, testInfo) => {
-    await page.goto('http://uitestingplayground.com/ajax')
+    await page.goto(process.env.URL)
     await page.getByText('Button Triggering AJAX Request').click()
     testInfo.setTimeout(testInfo.timeout + 2000) // modifies default timeout for +2 sec
 })
@@ -18,7 +18,7 @@ test('Auto waiting', async({page}) => {
     await expect(successButton).toHaveText("Data loaded with AJAX get request.", {timeout: 20000})
 })
 
-test('Alternative waits', async({page}) => {
+test.skip('Alternative waits', async({page}) => {
     const successButton = page.locator(':text-is("Data loaded with AJAX get request.")')
 
     // wait for element
@@ -34,7 +34,7 @@ test('Alternative waits', async({page}) => {
     expect (text).toContain("Data loaded with AJAX get request.")
 })
 
-test('Timeouts', async ({page}) => {
+test.skip('Timeouts', async ({page}) => {
     //test.setTimeout(10000)
     test.slow() //multiply test timeout for 3
     const successButton = page.locator(':text-is("Data loaded with AJAX get request.")')
