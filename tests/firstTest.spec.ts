@@ -1,40 +1,42 @@
 import {test} from '@playwright/test'
 
-// test.describe('test suite 1', () => {
-//     test('the first test', () => {
-
-//     })
-
-//     test('the first test', () => {
-
-//     })
-
-//     test('the first test', () => {
-
-//     })
+// test.beforeAll(() => {
 // })
-
-test.beforeAll(() => {
-
-})
 
 test.beforeEach(async({page}) => {
     await page.goto('http://localhost:4200/')
-    await page.getByText('Forms').click()
 })
 
-test('the first test', async ({page}) => {
-    await page.getByText('Form Layouts').click()
-})
+test.describe('Test suite 1', () => {
+    test.beforeEach(async({page}) => {
+        await page.getByText('Charts').click()
+    })
 
-test('navigate to Datepicker page', async ({page}) => {
-    await page.getByText('Datepicker').click()
-})
-
-test.afterEach(() => {
-
-})
-
-test.afterAll(() => {
+    test('Suite 1 Test 1', async ({page}) => {
+        await page.getByText('Form Layouts').click()
+    })
     
+    test('Suite 1 Test 2', async ({page}) => {
+        await page.getByText('Datepicker').click()
+    })
 })
+
+test.describe('Test suite 2', () => {
+    test.beforeEach(async({page}) => {
+        await page.getByText('Forms').click()
+    })
+
+    test('Suite 1 Test 1', async ({page}) => {
+        await page.getByText('Form Layouts').click()
+    })
+    
+    test('Suite 1 Test 2', async ({page}) => {
+        await page.getByText('Datepicker').click()
+    })
+})
+
+// test.afterEach(() => {
+// })
+
+// test.afterAll(() => {
+// })
