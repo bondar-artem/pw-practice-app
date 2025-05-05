@@ -88,4 +88,18 @@ test.describe("Form Layouts page", ()=> {
         const tooltip = await page.locator('nb-tooltip').textContent()
         expect(tooltip).toEqual('This is a tooltip')
     })
+
+    test('dialog', async ({page}) => {
+        await page.getByText('Tables & Data').click()
+        await page.getByText('Smart Table').click()
+
+        await page.getByRole('table').locator('tr', {hasText: 'mdo@gmail.com'}).locator('.nb-trash').click()
+        page.on('dialog', dialog => {
+            expect(dialog.message()).toEqual('Are you sure you want to delete?')
+            dialog.accept()
+        })
+
+        const allEmails: String[] = await page.locator('table > div > .ng-star-inserted').allTextContents()
+        expect(allEmails.includes('mdo@gmail.com')).toBeFalsy()
+    })
 })
