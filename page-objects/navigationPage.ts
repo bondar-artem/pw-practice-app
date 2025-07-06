@@ -1,8 +1,13 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 // This file defines a NavigationPage class that encapsulates navigation methods for a web application.
 
 export class NavigationPage {
     private readonly page: Page;
+    readonly fromLayoutsMenuItem: Locator
+    readonly datePickerMenuItem: Locator
+    readonly smartTableMenuItem: Locator
+    readonly toastrMenuIteam: Locator
+    readonly tooltipMenuItem: Locator
 
     constructor(page: Page) {
         this.page = page;
@@ -31,10 +36,19 @@ export class NavigationPage {
         await this.page.getByText('Tooltip').click()
 
     }
-    private async selectgroupMenuItem(groupItemTitle : string) {
-        const menuItem = this.page.getByTitle(groupItemTitle)
-        const expandedState = await menuItem.getAttribute('aria-expanded')
-        if (expandedState == "false")
-            await menuItem.click()
+    async selectgroupMenuItem(groupItemTitle: string) {
+        const menuItem = this.page.locator(`a[title="${groupItemTitle}"]`);
+
+        // Ensure the element is visible and ready for interaction
+        //await expect(menuItem).toBeVisible({ timeout: 10000 });  // Wait for visibility
+
+        // Check if the menu is expanded, if not, click to expand
+        const expandedState = await menuItem.getAttribute('aria-expanded');
+        if (expandedState === "false") {
+            await menuItem.click();
+        }
     }
+
+
 }
+
