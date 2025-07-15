@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({page}) => {
@@ -141,5 +142,32 @@ test.describe("Form Layouts page", ()=> {
                 }
             } 
         }   
+    })
+
+    test('datepicker', async ({page}) => {
+        await page.getByText('Forms').click()
+        await page.getByText('Datepicker').click()
+
+        const datePickerInputField = page.getByPlaceholder('Form Picker')
+        await datePickerInputField.click()
+
+        let date = new Date()
+        date.setDate(date.getDate() + 7)
+        const expectDate = date.getDay().toString()
+        const expectMonthShort = date.toLocaleString('En-US', {month: 'short'})
+        const expectMonthLong = date.toLocaleString('En-US', {month: 'long'})
+        const expectYear = date.getFullYear()
+        const dateToAssert = `${expectMonthShort} ${expectDate}, ${expectYear}`
+        let calendarMonthAndYear = await page.locator('nb-calendar-view-mode').textContent()
+        const expectedMonthAndYear = ` ${expectMonthLong} ${expectYear} `
+
+        while(!calendarMonthAndYear.includes(expectedMonthAndYear)) {
+            await page.locator('nb-icon [data-name="chevron-right"]').click()
+            calendarMonthAndYear = await page.locator('nb-calendar-view-mode').textContent()
+        }
+
+        await page.locator('[class="day-cell ng-star-inserted"]').getByText(expectDate, {exact: true}).click()
+        await expect(datePickerInputField).toHaveValue(dateToAssert)
+
     })
 })
