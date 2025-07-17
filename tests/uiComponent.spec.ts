@@ -7,8 +7,8 @@ test.beforeEach(async ({page}) => {
 
 test.describe("Form Layouts page", ()=> {
     test.beforeEach(async ({page}) => {
-        await page.getByText('Forms').click()
-        await page.getByText('Form Layouts').click()
+        // await page.getByText('Forms').click()
+        // await page.getByText('Form Layouts').click()
     })
 
     test('input fields', async ({page}) => {
@@ -168,6 +168,34 @@ test.describe("Form Layouts page", ()=> {
 
         await page.locator('[class="day-cell ng-star-inserted"]').getByText(expectDate, {exact: true}).click()
         await expect(datePickerInputField).toHaveValue(dateToAssert)
+
+    })
+
+    test('slider', async ({page}) => {
+        // Update attribute
+        // const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger circle')
+
+        // await tempGauge.evaluate(node => {
+        //     node.setAttribute('cx', '270.28236829324385'),
+        //     node.setAttribute('cy', '126.30677131193754')
+        // })
+        // await tempGauge.click()
+
+
+        // Mouse house
+        const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger')
+        await tempBox.scrollIntoViewIfNeeded()
+
+        const box = await tempBox.boundingBox()
+        const x = box.x + box.width/2
+        const y = box.y + box.height/2
+        await page.mouse.move(x, y)
+        await page.mouse.down()
+        await page.mouse.move(x + 100, y)
+        await page.mouse.move(x + 100 , y + 100)
+        await page.mouse.up()
+        await expect(tempBox).toContainText('30')
+
 
     })
 })
