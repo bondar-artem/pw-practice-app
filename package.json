@@ -10,6 +10,9 @@
     "ng": "ng",
     "start": "ng serve"
   },
+   "overrides": {
+    "stylus": "github:stylus/stylus#0.54.5"
+  },
   "dependencies": {
     "@angular/animations": "^14.2.12",
     "@angular/cdk": "12.1.0",
