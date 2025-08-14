@@ -1,5 +1,5 @@
 import{test, expect} from '@playwright/test'
-import { using } from 'rxjs'
+
 
 test.beforeEach(async({page})=> {
     await page.goto('http://localhost:4200/')
@@ -183,4 +183,66 @@ test('Web tabels', async({page}) => {
             } 
         }
 
+})
+
+
+test('date picker', async({page}) => {
+
+    await page.getByText('Forms').click()
+    await page.getByText('Datepicker').click()
+
+    const calendarInputField = await page.getByPlaceholder('Form Picker')
+    await calendarInputField.click()
+
+    let date = new Date()
+    date.setDate(date.getDate() +50)
+    const expectedDAte = date.getDate().toString()
+    const expectedMonthshort = date.toLocaleString('En-US', { month: 'short'})
+    const expectedYear = date.getFullYear().toString()
+
+    const dateToAssert = `${expectedMonthshort} ${expectedDAte}, ${expectedYear}`
+
+    const expectedMonthLong = date.toLocaleDateString('EN-us', {month: 'long'})
+
+    let calendarMonthAndYear = await page.locator('[class="appearance-ghost size-medium shape-rectangle icon-end status-basic nb-transition"]').textContent()
+
+    const expecteMonthandYear = ' ' + expectedMonthLong+ ' '+ expectedYear + ' '
+
+    while(expecteMonthandYear != calendarMonthAndYear) {
+        await page.locator('[class="next-month appearance-ghost size-medium shape-rectangle icon-start icon-end status-basic nb-transition"]').click();
+        calendarMonthAndYear =  await page.locator('[class="appearance-ghost size-medium shape-rectangle icon-end status-basic nb-transition"]').textContent()
+    } 
+    await page.locator('[class ="day-cell ng-star-inserted"]').getByText(expectedDAte, {exact: true}).click();
+    await expect(calendarInputField).toHaveValue(dateToAssert);
+    
+
+} )
+
+test('Sliders', async({page}) => {
+    const temperatureGauge = await page.locator('[Tabletitle="Temperature"] ngx-temperature-dragger circle')
+    await temperatureGauge.evaluate ( node => {
+           node.setAttribute('cx', '232')
+          node.setAttribute('cy', '232')
+    })
+    await temperatureGauge.click()
+
+    //mouse movement
+        const tempBox = page.locator('ngx-temperature-dragger').first()
+        tempBox.click()
+        await tempBox.scrollIntoViewIfNeeded()
+
+
+        const box = await tempBox.boundingBox()
+        console.log(box)
+        const x = box.x + box.width/2
+        const y = box.y + box.height/2
+
+
+        await page.mouse.move(x,y)
+        await page.mouse.down()
+        await page.mouse.move(x - 100,y)
+        await page.mouse.move(x-100, y+100)
+        await page.mouse.up()
+        await expect(tempBox).toContainText('13')
+        
 })
