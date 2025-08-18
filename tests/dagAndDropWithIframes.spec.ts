@@ -1,8 +1,9 @@
-import{test, expect} from '@playwright/test'
+import{expect} from '@playwright/test'
+import{test} from '../test_options'
 
 
-test.beforeEach(async({page})=> {
-    await page.goto('https://www.globalsqa.com/demo-site/draganddrop/')
+test.beforeEach(async({page, globalsQaURL})=> {
+    await page.goto(globalsQaURL)
     await page.getByRole('button', {name:'Consent'}).click()
     })
 
