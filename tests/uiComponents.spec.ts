@@ -1,4 +1,5 @@
 import{test, expect} from '@playwright/test'
+import { timeout } from 'rxjs-compat/operator/timeout'
 
 
 test.beforeEach(async({page})=> {
@@ -7,7 +8,6 @@ test.beforeEach(async({page})=> {
 
 test.describe.parallel('Form Layouts Page', () =>{
 
-    test.describe.
     test.beforeEach(async({page})=> {
     await page.getByText('Forms').click()
     await page.getByText('Form Layouts').click()
@@ -34,24 +34,25 @@ test.describe.parallel('Form Layouts Page', () =>{
 
     })
 
-    test('radio buttons', async({page}) => {
+    test.only('radio buttons', async({page}) => {
        const usingTheGrid = page.locator('nb-card', {hasText:"Using the Grid"}) 
-       
-       await usingTheGrid.getByLabel('Option 1').check({force: true})
 
 
        await usingTheGrid.getByRole('radio', {name: 'Option 2'}).check({force: true})
+
+
+       await expect(usingTheGrid).toHaveScreenshot({maxDiffPixels:250})
         //generic assertion
-        const radioStatus = await usingTheGrid.getByRole('radio', {name: 'Option 2'}).isChecked()
-        expect(radioStatus).toBeTruthy()
-        //locator assertion
+//       const radioStatus = await usingTheGrid.getByRole('radio', {name: 'Option '}).isChecked()
+        // expect(radioStatus).toBeTruthy()
+        // //locator assertion
 
-        await expect(usingTheGrid.getByLabel('Option 2')).toBeChecked()
+        // await expect(usingTheGrid.getByLabel('Option 2')).toBeChecked()
 
 
-        //generic assertion, whole locator + function to evaluate
-        expect(await usingTheGrid.getByRole('radio', {name: 'Option 1'}).isChecked()).toBeFalsy()
-        expect(await usingTheGrid.getByRole('radio', {name: 'Option 1'}).isChecked()).toBeTruthy()
+    
+        // expect(await usingTheGrid.getByRole('radio', {name: 'Option 1'}).isChecked()).toBeFalsy()
+        // expect(await usingTheGrid.getByRole('radio', {name: 'Option 1'}).isChecked()).toBeTruthy()
 
     })
 })

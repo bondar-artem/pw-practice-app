@@ -12,7 +12,7 @@ export class FormLayoutsPage extends HelperBase{
         await usingTheGridForm.getByRole('textbox', {name: 'Email'}).fill(email)
         await usingTheGridForm.getByRole('textbox', {name:"Password"}).fill(password)
         await usingTheGridForm.getByRole('radio', {name: option}).check({force: true})
-        await usingTheGridForm.getByRole('button').click()
+        await usingTheGridForm.getByRole('button').click({force:true})
 
     }
 

@@ -1,0 +1,10 @@
+services:
+  playwright:
+    image: playwright-test
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    command: npm run pageObjectFullscreen-chrome
+    volumes:
+     - ./playwright-report:/app/playwright-report
+     - ./test-results:/app/test-results
