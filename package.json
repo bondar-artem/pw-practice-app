@@ -13,6 +13,9 @@
     "pageObjects-firefox": "npx playwright test usePageObjects.spec.ts --project=firefox",
     "pageObjects-all": "npm run pageObjects-chrome && pageObjects-firefox"
   },
+   "overrides": {
+    "stylus": "github:stylus/stylus#0.54.5"
+  },
   "dependencies": {
     "@angular/animations": "^14.2.12",
     "@angular/cdk": "12.1.0",
