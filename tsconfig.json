@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "importHelpers": true,
-    "module": "es2020",
+    "module": "commonjs",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
