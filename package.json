@@ -66,6 +66,7 @@
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "@playwright/test": "^1.60.0",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
     "codelyzer": "^0.0.28",
